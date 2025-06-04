@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_homepage_section6_sliders",
+  "info": {
+    "displayName": "Section6 Slider",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "media_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "file_type": {
+      "type": "enumeration",
+      "enum": [
+        "Image",
+        "Video"
+      ]
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "video_file": {
+      "allowedTypes": [
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

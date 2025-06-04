@@ -133,6 +133,14 @@
         }
       },
       "type": "string"
+    },
+    "videoTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

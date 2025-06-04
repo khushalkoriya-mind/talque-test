@@ -39,7 +39,7 @@
     "teaser_image": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
@@ -153,15 +153,62 @@
       "type": "text",
       "required": true
     },
-    "team_data": {
-      "type": "component",
-      "repeatable": true,
+    "teaser_media_type": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "career.team",
+      "type": "enumeration",
+      "enum": [
+        "Image",
+        "Video"
+      ],
+      "default": "Image",
+      "required": true
+    },
+    "teaser_video_thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "teaser_video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "what_we_offer_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "what_we_offer_description": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
       "required": true
     }
   }

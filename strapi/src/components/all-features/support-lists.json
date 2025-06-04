@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_all_features_support_lists",
+  "info": {
+    "displayName": "Support Lists",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

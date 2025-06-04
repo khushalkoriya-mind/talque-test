@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_tradeshow_how_we_do_it_data",
+  "info": {
+    "displayName": "How We Do It Data",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

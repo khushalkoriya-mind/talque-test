@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_all_features_features",
+  "info": {
+    "displayName": "Features",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "list_title": {
+      "type": "string",
+      "required": true
+    },
+    "list_description": {
+      "type": "text",
+      "required": true
+    },
+    "list_data": {
+      "type": "component",
+      "repeatable": true,
+      "component": "all-features.features-list",
+      "required": true,
+      "min": 1
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

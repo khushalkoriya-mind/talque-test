@@ -1,5 +1,65 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface AllFeaturesFeaturesList extends Schema.Component {
+  collectionName: 'components_all_features_features_lists';
+  info: {
+    displayName: 'features-list';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.RichText & Attribute.Required;
+    media_type: Attribute.Enumeration<['Image', 'Video']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Image'>;
+    image: Attribute.Media<'images'>;
+    video_thumbnail: Attribute.Media<'images'>;
+    video_file: Attribute.Media<'videos'>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface AllFeaturesFeatures extends Schema.Component {
+  collectionName: 'components_all_features_features';
+  info: {
+    displayName: 'Features';
+    description: '';
+  };
+  attributes: {
+    list_title: Attribute.String & Attribute.Required;
+    list_description: Attribute.Text & Attribute.Required;
+    list_data: Attribute.Component<'all-features.features-list', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface AllFeaturesSupportLists extends Schema.Component {
+  collectionName: 'components_all_features_support_lists';
+  info: {
+    displayName: 'Support Lists';
+    description: '';
+  };
+  attributes: {
+    icon: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface BlogBlogDetail extends Schema.Component {
   collectionName: 'components_blog_details_blog_details';
   info: {
@@ -13,6 +73,14 @@ export interface BlogBlogDetail extends Schema.Component {
       Attribute.DefaultTo<false>;
     content: Attribute.RichText;
   };
+}
+
+export interface BlogShareBlogOnSocialMedia extends Schema.Component {
+  collectionName: 'components_blog_share_blog_on_social_medias';
+  info: {
+    displayName: 'Share Blog On Social Media';
+  };
+  attributes: {};
 }
 
 export interface CareerCareerThreeBoxes extends Schema.Component {
@@ -222,6 +290,59 @@ export interface HelpBoxHelpBox extends Schema.Component {
   };
 }
 
+export interface HomepageSection6Data extends Schema.Component {
+  collectionName: 'components_homepage_section_6_data';
+  info: {
+    displayName: 'Section 6 Data';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface HomepageSection6Slider extends Schema.Component {
+  collectionName: 'components_homepage_section6_sliders';
+  info: {
+    displayName: 'Section6 Slider';
+    description: '';
+  };
+  attributes: {
+    media_thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    file_type: Attribute.Enumeration<['Image', 'Video']>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    video_file: Attribute.Media<'videos'>;
+  };
+}
+
+export interface InteractionCustomers extends Schema.Component {
+  collectionName: 'components_interaction_customers';
+  info: {
+    displayName: 'Customers';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    logo: Attribute.Media<'images'> & Attribute.Required;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
+export interface ReleaseNotesDetailedDescription extends Schema.Component {
+  collectionName: 'components_release_notes_detailed_descriptions';
+  info: {
+    displayName: 'Detailed Description';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.RichText;
+  };
+}
+
 export interface SharedSeo extends Schema.Component {
   collectionName: 'components_shared_seos';
   info: {
@@ -254,6 +375,22 @@ export interface TradeshowExhibitorRevenue extends Schema.Component {
   };
 }
 
+export interface TradeshowHowWeDoItData extends Schema.Component {
+  collectionName: 'components_tradeshow_how_we_do_it_data';
+  info: {
+    displayName: 'How We Do It Data';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 export interface TradeshowOrganiserJourney extends Schema.Component {
   collectionName: 'components_tradeshow_organiser_journeys';
   info: {
@@ -267,6 +404,23 @@ export interface TradeshowOrganiserJourney extends Schema.Component {
       Attribute.DefaultTo<false>;
     image: Attribute.Media<'images'>;
     description: Attribute.RichText;
+  };
+}
+
+export interface TradeshowWhyTalqueAboutDetails extends Schema.Component {
+  collectionName: 'components_tradeshow_why_talque_about_details';
+  info: {
+    displayName: 'Why Talque About Details';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    second_title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
   };
 }
 
@@ -287,10 +441,30 @@ export interface TradeshowWhyTalqueHotspotData extends Schema.Component {
   };
 }
 
+export interface WhyTalquePageWhyTalquePageSection4Columns
+  extends Schema.Component {
+  collectionName: 'components_why_talque_page_why_talque_page_section_4_columns';
+  info: {
+    displayName: 'Why Talque Page Section 4 Columns';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.RichText & Attribute.Required;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'all-features.features-list': AllFeaturesFeaturesList;
+      'all-features.features': AllFeaturesFeatures;
+      'all-features.support-lists': AllFeaturesSupportLists;
       'blog.blog-detail': BlogBlogDetail;
+      'blog.share-blog-on-social-media': BlogShareBlogOnSocialMedia;
       'career.career-three-boxes': CareerCareerThreeBoxes;
       'career.life-at-talque-images': CareerLifeAtTalqueImages;
       'career.team': CareerTeam;
@@ -303,10 +477,17 @@ declare module '@strapi/types' {
       'global.footer': GlobalFooter;
       'global.links': GlobalLinks;
       'help-box.help-box': HelpBoxHelpBox;
+      'homepage.section-6-data': HomepageSection6Data;
+      'homepage.section6-slider': HomepageSection6Slider;
+      'interaction.customers': InteractionCustomers;
+      'release-notes.detailed-description': ReleaseNotesDetailedDescription;
       'shared.seo': SharedSeo;
       'tradeshow.exhibitor-revenue': TradeshowExhibitorRevenue;
+      'tradeshow.how-we-do-it-data': TradeshowHowWeDoItData;
       'tradeshow.organiser-journey': TradeshowOrganiserJourney;
+      'tradeshow.why-talque-about-details': TradeshowWhyTalqueAboutDetails;
       'tradeshow.why-talque-hotspot-data': TradeshowWhyTalqueHotspotData;
+      'why-talque-page.why-talque-page-section-4-columns': WhyTalquePageWhyTalquePageSection4Columns;
     }
   }
 }

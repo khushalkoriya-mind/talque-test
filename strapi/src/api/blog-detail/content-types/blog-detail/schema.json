@@ -82,6 +82,29 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "related_blog_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "related_blog_subtitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "social_media_platforms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social-media-platform.social-media-platform"
     }
   }
 }

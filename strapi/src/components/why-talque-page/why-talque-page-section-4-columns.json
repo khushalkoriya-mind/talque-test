@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_why_talque_page_why_talque_page_section_4_columns",
+  "info": {
+    "displayName": "Why Talque Page Section 4 Columns",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

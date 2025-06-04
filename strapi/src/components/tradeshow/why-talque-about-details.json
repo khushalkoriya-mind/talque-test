@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_tradeshow_why_talque_about_details",
+  "info": {
+    "displayName": "Why Talque About Details",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "second_title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

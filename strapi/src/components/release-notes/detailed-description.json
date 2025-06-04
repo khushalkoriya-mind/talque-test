@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_release_notes_detailed_descriptions",
+  "info": {
+    "displayName": "Detailed Description"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": false
+    }
+  }
+}

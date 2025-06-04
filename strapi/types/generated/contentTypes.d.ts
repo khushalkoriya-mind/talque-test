@@ -788,6 +788,87 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAllFeatureAllFeature extends Schema.SingleType {
+  collectionName: 'all_features';
+  info: {
+    singularName: 'all-feature';
+    pluralName: 'all-features';
+    displayName: 'All Feature';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    main_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    main_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    lists: Attribute.Component<'all-features.features', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    support_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    support_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    support_lists: Attribute.Component<'all-features.support-lists', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::all-feature.all-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::all-feature.all-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::all-feature.all-feature',
+      'oneToMany',
+      'api::all-feature.all-feature'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiBlogBlog extends Schema.SingleType {
   collectionName: 'blogs';
   info: {
@@ -901,6 +982,25 @@ export interface ApiBlogDetailBlogDetail extends Schema.CollectionType {
         };
       }> &
       Attribute.DefaultTo<false>;
+    related_blog_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    related_blog_subtitle: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    social_media_platforms: Attribute.Relation<
+      'api::blog-detail.blog-detail',
+      'oneToMany',
+      'api::social-media-platform.social-media-platform'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1015,7 +1115,6 @@ export interface ApiCareerCareer extends Schema.SingleType {
       }> &
       Attribute.DefaultTo<'We are looking for talents like you! Support us in the areas of IT, sales, project/event management, marketing and many more! Find the right position for you and send us your application! Exciting tasks and a great team await you in vibrant Berlin.'>;
     teaser_image: Attribute.Media<'images'> &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1116,7 +1215,34 @@ export interface ApiCareerCareer extends Schema.SingleType {
           localized: true;
         };
       }>;
-    team_data: Attribute.Component<'career.team', true> &
+    teaser_media_type: Attribute.Enumeration<['Image', 'Video']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Image'>;
+    teaser_video_thumbnail: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_video: Attribute.Media<'videos'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    what_we_offer_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    what_we_offer_description: Attribute.Text &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1288,6 +1414,83 @@ export interface ApiDepartmentDepartment extends Schema.CollectionType {
   };
 }
 
+export interface ApiEventCalendarEventCalendar extends Schema.CollectionType {
+  collectionName: 'event_calendars';
+  info: {
+    singularName: 'event-calendar';
+    pluralName: 'event-calendars';
+    displayName: 'Event Calendar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event-calendar.event-calendar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event-calendar.event-calendar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::event-calendar.event-calendar',
+      'oneToMany',
+      'api::event-calendar.event-calendar'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
@@ -1377,6 +1580,7 @@ export interface ApiGetLatestUpdateGetLatestUpdate
   attributes: {
     email: Attribute.Email &
       Attribute.Required &
+      Attribute.Unique &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1401,6 +1605,83 @@ export interface ApiGetLatestUpdateGetLatestUpdate
       'api::get-latest-update.get-latest-update',
       'oneToMany',
       'api::get-latest-update.get-latest-update'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiGetTeamDetailGetTeamDetail extends Schema.CollectionType {
+  collectionName: 'get_team_details';
+  info: {
+    singularName: 'get-team-detail';
+    pluralName: 'get-team-details';
+    displayName: 'Get Team Detail';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    profile_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    position: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    full_profile_picture: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::get-team-detail.get-team-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::get-team-detail.get-team-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::get-team-detail.get-team-detail',
+      'oneToMany',
+      'api::get-team-detail.get-team-detail'
     >;
     locale: Attribute.String;
   };
@@ -1529,6 +1810,12 @@ export interface ApiHelpBoxHelpBox extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    videoTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1548,6 +1835,512 @@ export interface ApiHelpBoxHelpBox extends Schema.CollectionType {
       'api::help-box.help-box',
       'oneToMany',
       'api::help-box.help-box'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'HomePage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    homepage_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    homepage_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta_boxes: Attribute.Component<'common.button', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subtitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_customers: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    use_talque_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    use_talque_subtitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_best_practices: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subtitle_best_practices: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image_video_best_practices: Attribute.Media<'images' | 'videos'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    box_traction_numbers: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    best_practice_ctabox: Attribute.Component<'common.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    all_parts_together_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    all_parts_together_link: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    event_calendar_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    event_calendar_cta_box: Attribute.Component<'common.button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    client_testimonial_bluetext: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    client_testimonial_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_media_type: Attribute.Enumeration<['Image', 'Video']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Image'>;
+    teaser_video_thumbnail: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_video: Attribute.Media<'videos'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    story_small_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    story_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    story_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    story_data: Attribute.Component<'homepage.section-6-data', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          max: 4;
+        },
+        number
+      >;
+    story_slider_data: Attribute.Component<'homepage.section6-slider', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    story_btn: Attribute.Component<'common.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiHomepageHotspotHomepageHotspot
+  extends Schema.CollectionType {
+  collectionName: 'homepage_hotspots';
+  info: {
+    singularName: 'homepage-hotspot';
+    pluralName: 'homepage-hotspots';
+    displayName: 'Homepage Hotspot';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::homepage-hotspot.homepage-hotspot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::homepage-hotspot.homepage-hotspot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::homepage-hotspot.homepage-hotspot',
+      'oneToMany',
+      'api::homepage-hotspot.homepage-hotspot'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiInteractionInteraction extends Schema.SingleType {
+  collectionName: 'interactions';
+  info: {
+    singularName: 'interaction';
+    pluralName: 'interactions';
+    displayName: 'Interaction/Product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    product_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    product_description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    CTA_boxes: Attribute.Component<'common.button', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_2: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description_2: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_3: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_4: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    customer_data: Attribute.Component<'interaction.customers', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_media_type: Attribute.Enumeration<['Image', 'Video']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Image'>;
+    teaser_video_thumbnail: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_video: Attribute.Media<'videos'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::interaction.interaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::interaction.interaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::interaction.interaction',
+      'oneToMany',
+      'api::interaction.interaction'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiInteractionFeatureInteractionFeature
+  extends Schema.CollectionType {
+  collectionName: 'interaction_features';
+  info: {
+    singularName: 'interaction-feature';
+    pluralName: 'interaction-features';
+    displayName: 'Interaction Feature';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::interaction-feature.interaction-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::interaction-feature.interaction-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::interaction-feature.interaction-feature',
+      'oneToMany',
+      'api::interaction-feature.interaction-feature'
     >;
     locale: Attribute.String;
   };
@@ -1795,6 +2588,21 @@ export interface ApiOpenPositionOpenPosition extends Schema.CollectionType {
           localized: true;
         };
       }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    second_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1814,6 +2622,467 @@ export interface ApiOpenPositionOpenPosition extends Schema.CollectionType {
       'api::open-position.open-position',
       'oneToMany',
       'api::open-position.open-position'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiReleaseNoteReleaseNote extends Schema.SingleType {
+  collectionName: 'release_notes';
+  info: {
+    singularName: 'release-note';
+    pluralName: 'release-notes';
+    displayName: 'Release Note';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::release-note.release-note',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::release-note.release-note',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::release-note.release-note',
+      'oneToMany',
+      'api::release-note.release-note'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiReleaseNoteListReleaseNoteList
+  extends Schema.CollectionType {
+  collectionName: 'release_note_lists';
+  info: {
+    singularName: 'release-note-list';
+    pluralName: 'release-note-lists';
+    displayName: 'Release Note List';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    CTA_box: Attribute.Component<'common.button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    version: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    date: Attribute.DateTime &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    release_note_tags: Attribute.Relation<
+      'api::release-note-list.release-note-list',
+      'oneToMany',
+      'api::release-note-tag.release-note-tag'
+    >;
+    detailed_description: Attribute.Component<
+      'release-notes.detailed-description',
+      true
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sub_heading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    media_images: Attribute.Media<'images', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    is_have_video: Attribute.Enumeration<['Yes', 'No']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'No'>;
+    video_file: Attribute.Media<'videos'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::release-note-list.release-note-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::release-note-list.release-note-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::release-note-list.release-note-list',
+      'oneToMany',
+      'api::release-note-list.release-note-list'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiReleaseNoteTagReleaseNoteTag extends Schema.CollectionType {
+  collectionName: 'release_note_tags';
+  info: {
+    singularName: 'release-note-tag';
+    pluralName: 'release-note-tags';
+    displayName: 'Release Note Tag';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    theme_color: Attribute.Enumeration<['Blue', 'Green', 'Pink']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Blue'>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::release-note-tag.release-note-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::release-note-tag.release-note-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::release-note-tag.release-note-tag',
+      'oneToMany',
+      'api::release-note-tag.release-note-tag'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSocialMediaPlatformSocialMediaPlatform
+  extends Schema.CollectionType {
+  collectionName: 'social_media_platforms';
+  info: {
+    singularName: 'social-media-platform';
+    pluralName: 'social-media-platforms';
+    displayName: 'Social Media Platform';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    alt_text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    redirect_url: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    target: Attribute.Enumeration<['_parent', '_blank', '_self']> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::social-media-platform.social-media-platform',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::social-media-platform.social-media-platform',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::social-media-platform.social-media-platform',
+      'oneToMany',
+      'api::social-media-platform.social-media-platform'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSolutionSolution extends Schema.CollectionType {
+  collectionName: 'solutions';
+  info: {
+    singularName: 'solution';
+    pluralName: 'solutions';
+    displayName: 'Solution';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    label: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::solution.solution',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::solution.solution',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::solution.solution',
+      'oneToMany',
+      'api::solution.solution'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSolutionBoxSolutionBox extends Schema.CollectionType {
+  collectionName: 'solution_boxes';
+  info: {
+    singularName: 'solution-box';
+    pluralName: 'solution-boxes';
+    displayName: 'Solution Box';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::solution-box.solution-box',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::solution-box.solution-box',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::solution-box.solution-box',
+      'oneToMany',
+      'api::solution-box.solution-box'
     >;
     locale: Attribute.String;
   };
@@ -1850,22 +3119,13 @@ export interface ApiTradeshowTradeshow extends Schema.SingleType {
           localized: true;
         };
       }>;
-    teaser_image_or_video: Attribute.Media<'images' | 'videos'> &
-      Attribute.Required &
+    teaser_image: Attribute.Media<'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    teaser_type: Attribute.Enumeration<['Audio', 'Video']> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.DefaultTo<'Audio'>;
-    buttons: Attribute.Component<'common.button', true> &
+    get_the_most_out_buttons: Attribute.Component<'common.button', true> &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -2053,6 +3313,74 @@ export interface ApiTradeshowTradeshow extends Schema.SingleType {
       'oneToMany',
       'api::tradeshow-visitor.tradeshow-visitor'
     >;
+    why_talque_all_about_details: Attribute.Component<
+      'tradeshow.why-talque-about-details',
+      true
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    why_talque_about_details_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    how_we_do_it_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    how_we_do_it_small_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    how_we_do_it_rightbutton: Attribute.Component<'common.button'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    how_we_do_it_data: Attribute.Component<
+      'tradeshow.how-we-do-it-data',
+      true
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_media_type: Attribute.Enumeration<['Image', 'Video']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Image'>;
+    teaser_video_thumbnail: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_video: Attribute.Media<'videos'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2294,6 +3622,75 @@ export interface ApiTradeshowSolutionListTradeshowSolutionList
   };
 }
 
+export interface ApiTradeshowTrustLogoTradeshowTrustLogo
+  extends Schema.CollectionType {
+  collectionName: 'tradeshow_trust_logos';
+  info: {
+    singularName: 'tradeshow-trust-logo';
+    pluralName: 'tradeshow-trust-logos';
+    displayName: 'Tradeshow Trust Logos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tradeshow-trust-logo.tradeshow-trust-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tradeshow-trust-logo.tradeshow-trust-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::tradeshow-trust-logo.tradeshow-trust-logo',
+      'oneToMany',
+      'api::tradeshow-trust-logo.tradeshow-trust-logo'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiTradeshowVisitorTradeshowVisitor
   extends Schema.CollectionType {
   collectionName: 'tradeshow_visitors';
@@ -2372,6 +3769,76 @@ export interface ApiTradeshowVisitorTradeshowVisitor
       'api::tradeshow-visitor.tradeshow-visitor',
       'oneToMany',
       'api::tradeshow-visitor.tradeshow-visitor'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiTradeshowsHotspotTradeshowsHotspot
+  extends Schema.CollectionType {
+  collectionName: 'tradeshows_hotspots';
+  info: {
+    singularName: 'tradeshows-hotspot';
+    pluralName: 'tradeshows-hotspots';
+    displayName: 'Tradeshows Hotspot';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tradeshows-hotspot.tradeshows-hotspot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tradeshows-hotspot.tradeshows-hotspot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::tradeshows-hotspot.tradeshows-hotspot',
+      'oneToMany',
+      'api::tradeshows-hotspot.tradeshows-hotspot'
     >;
     locale: Attribute.String;
   };
@@ -2456,6 +3923,443 @@ export interface ApiTrustPartnerLogoTrustPartnerLogo
   };
 }
 
+export interface ApiWantMoreExperienceWantMoreExperience
+  extends Schema.SingleType {
+  collectionName: 'want_more_experiences';
+  info: {
+    singularName: 'want-more-experience';
+    pluralName: 'want-more-experiences';
+    displayName: 'Want More Experience';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    button: Attribute.Component<'common.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::want-more-experience.want-more-experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::want-more-experience.want-more-experience',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::want-more-experience.want-more-experience',
+      'oneToMany',
+      'api::want-more-experience.want-more-experience'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiWhyTalqueLogoWhyTalqueLogo extends Schema.CollectionType {
+  collectionName: 'why_talque_logos';
+  info: {
+    singularName: 'why-talque-logo';
+    pluralName: 'why-talque-logos';
+    displayName: 'Why Talque Logo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    logo: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::why-talque-logo.why-talque-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::why-talque-logo.why-talque-logo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::why-talque-logo.why-talque-logo',
+      'oneToMany',
+      'api::why-talque-logo.why-talque-logo'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiWhyTalquePageWhyTalquePage extends Schema.SingleType {
+  collectionName: 'why_talque_pages';
+  info: {
+    singularName: 'why-talque-page';
+    pluralName: 'why-talque-pages';
+    displayName: 'Why Talque Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    cta_boxes: Attribute.Component<'common.button', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_2: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description_2: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_3: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description_3: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    why_talque_page_afters: Attribute.Relation<
+      'api::why-talque-page.why-talque-page',
+      'oneToMany',
+      'api::why-talque-page-after.why-talque-page-after'
+    >;
+    title_4: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description_4: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    column_data: Attribute.Component<
+      'why-talque-page.why-talque-page-section-4-columns',
+      true
+    > &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    video_thumbnail: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    video_file: Attribute.Media<'videos'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    get_to_know_team_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    get_to_know_team_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_media_type: Attribute.Enumeration<['Image', 'Video']> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<'Image'>;
+    teaser_video_thumbnail: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    teaser_video: Attribute.Media<'videos'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::why-talque-page.why-talque-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::why-talque-page.why-talque-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::why-talque-page.why-talque-page',
+      'oneToMany',
+      'api::why-talque-page.why-talque-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiWhyTalquePageAfterWhyTalquePageAfter
+  extends Schema.CollectionType {
+  collectionName: 'why_talque_page_afters';
+  info: {
+    singularName: 'why-talque-page-after';
+    pluralName: 'why-talque-page-afters';
+    displayName: 'Why Talque Page After';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::why-talque-page-after.why-talque-page-after',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::why-talque-page-after.why-talque-page-after',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::why-talque-page-after.why-talque-page-after',
+      'oneToMany',
+      'api::why-talque-page-after.why-talque-page-after'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiWhyTalquePageHotSpotWhyTalquePageHotSpot
+  extends Schema.CollectionType {
+  collectionName: 'why_talque_page_hot_spots';
+  info: {
+    singularName: 'why-talque-page-hot-spot';
+    pluralName: 'why-talque-page-hot-spots';
+    displayName: 'Why Talque Page HotSpot';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    is_optional: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::why-talque-page-hot-spot.why-talque-page-hot-spot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::why-talque-page-hot-spot.why-talque-page-hot-spot',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::why-talque-page-hot-spot.why-talque-page-hot-spot',
+      'oneToMany',
+      'api::why-talque-page-hot-spot.why-talque-page-hot-spot'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -2474,24 +4378,44 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::all-feature.all-feature': ApiAllFeatureAllFeature;
       'api::blog.blog': ApiBlogBlog;
       'api::blog-detail.blog-detail': ApiBlogDetailBlogDetail;
       'api::blog-tag.blog-tag': ApiBlogTagBlogTag;
       'api::career.career': ApiCareerCareer;
       'api::client-testimonial.client-testimonial': ApiClientTestimonialClientTestimonial;
       'api::department.department': ApiDepartmentDepartment;
+      'api::event-calendar.event-calendar': ApiEventCalendarEventCalendar;
       'api::footer.footer': ApiFooterFooter;
       'api::get-latest-update.get-latest-update': ApiGetLatestUpdateGetLatestUpdate;
+      'api::get-team-detail.get-team-detail': ApiGetTeamDetailGetTeamDetail;
       'api::help-box.help-box': ApiHelpBoxHelpBox;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::homepage-hotspot.homepage-hotspot': ApiHomepageHotspotHomepageHotspot;
+      'api::interaction.interaction': ApiInteractionInteraction;
+      'api::interaction-feature.interaction-feature': ApiInteractionFeatureInteractionFeature;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::navigation-dropdown-link.navigation-dropdown-link': ApiNavigationDropdownLinkNavigationDropdownLink;
       'api::open-position.open-position': ApiOpenPositionOpenPosition;
+      'api::release-note.release-note': ApiReleaseNoteReleaseNote;
+      'api::release-note-list.release-note-list': ApiReleaseNoteListReleaseNoteList;
+      'api::release-note-tag.release-note-tag': ApiReleaseNoteTagReleaseNoteTag;
+      'api::social-media-platform.social-media-platform': ApiSocialMediaPlatformSocialMediaPlatform;
+      'api::solution.solution': ApiSolutionSolution;
+      'api::solution-box.solution-box': ApiSolutionBoxSolutionBox;
       'api::tradeshow.tradeshow': ApiTradeshowTradeshow;
       'api::tradeshow-exhibitor.tradeshow-exhibitor': ApiTradeshowExhibitorTradeshowExhibitor;
       'api::tradeshow-organiser.tradeshow-organiser': ApiTradeshowOrganiserTradeshowOrganiser;
       'api::tradeshow-solution-list.tradeshow-solution-list': ApiTradeshowSolutionListTradeshowSolutionList;
+      'api::tradeshow-trust-logo.tradeshow-trust-logo': ApiTradeshowTrustLogoTradeshowTrustLogo;
       'api::tradeshow-visitor.tradeshow-visitor': ApiTradeshowVisitorTradeshowVisitor;
+      'api::tradeshows-hotspot.tradeshows-hotspot': ApiTradeshowsHotspotTradeshowsHotspot;
       'api::trust-partner-logo.trust-partner-logo': ApiTrustPartnerLogoTrustPartnerLogo;
+      'api::want-more-experience.want-more-experience': ApiWantMoreExperienceWantMoreExperience;
+      'api::why-talque-logo.why-talque-logo': ApiWhyTalqueLogoWhyTalqueLogo;
+      'api::why-talque-page.why-talque-page': ApiWhyTalquePageWhyTalquePage;
+      'api::why-talque-page-after.why-talque-page-after': ApiWhyTalquePageAfterWhyTalquePageAfter;
+      'api::why-talque-page-hot-spot.why-talque-page-hot-spot': ApiWhyTalquePageHotSpotWhyTalquePageHotSpot;
     }
   }
 }
