@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_common_links",
+  "info": {
+    "displayName": "Header",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "is_have_child_links": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "target": {
+      "type": "enumeration",
+      "enum": [
+        "_blank",
+        "_parent",
+        "_self"
+      ],
+      "required": true
+    },
+    "child_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.child-links"
+    },
+    "child_link_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "child_link_description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

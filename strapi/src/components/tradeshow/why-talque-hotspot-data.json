@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_tradeshow_why_talque_hotspot_data",
+  "info": {
+    "displayName": "Why Talque Hotspot Data",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "alt_text": {
+      "type": "string"
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

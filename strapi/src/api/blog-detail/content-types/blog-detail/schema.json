@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_details",
+  "info": {
+    "singularName": "blog-detail",
+    "pluralName": "blog-details",
+    "displayName": "Blogs",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "blog_title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "default": "MedtecLIVE & SUMMIT 2021",
+      "required": true
+    },
+    "blog_tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-tag.blog-tag"
+    },
+    "blog_date": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "datetime"
+    },
+    "blog_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "blog_text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "default": "The MedtecLIVE & SUMMIT event is a trade fair for medical technology in conjunction with the renowned MedtecSUMMIT Congress & Partnering, which networks all players in the medical technology industry. Developed from the Medtec Europe and MT-CONNECT events, MedtecLIVE entered the market as THE European trade fair with over 400 exhibitors on the subject of medical technology at the very first event in 2019. The MedtecLIVE event concept aims to network all players in the medical technology industry, from traditional suppliers to manufacturers. In 2020 and 2021, MedtecLIVE took place together with the MedtecSUMMIT Congress in a purely virtual format.",
+      "required": true
+    },
+    "blog_images": {
+      "displayName": "Blog Detail",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blog.blog-detail"
+    },
+    "is_optional": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

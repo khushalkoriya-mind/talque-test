@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_carrer_life_at_talque_images",
+  "info": {
+    "displayName": "Life At Talque Images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

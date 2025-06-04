@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_experience_want_more_experiences",
+  "info": {
+    "displayName": "Want More Experience"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.button"
+    }
+  }
+}

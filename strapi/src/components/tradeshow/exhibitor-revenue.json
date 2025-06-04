@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_tradeshow_exhibitor_revenues",
+  "info": {
+    "displayName": "Exhibitor Revenue"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

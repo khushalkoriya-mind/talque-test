@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contact_us_contact_uses",
+  "info": {
+    "displayName": "Contact Us",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.button"
+    },
+    "contactus_modes": {
+      "displayName": "Contact Us Mode",
+      "type": "component",
+      "repeatable": true,
+      "component": "contact-us.contact-us-mode"
+    }
+  }
+}

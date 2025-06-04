@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_menu_dropdowns",
+  "info": {
+    "displayName": "Header Dropdown",
+    "icon": "arrowDown",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "header_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::navigation-dropdown-link.navigation-dropdown-link"
+    },
+    "media_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "media_description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

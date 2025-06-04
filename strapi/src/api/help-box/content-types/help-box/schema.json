@@ -1,0 +1,138 @@
+{
+  "kind": "collectionType",
+  "collectionName": "help_boxes",
+  "info": {
+    "singularName": "help-box",
+    "pluralName": "help-boxes",
+    "displayName": "Help Box",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "text": {
+      "type": "blocks",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "button": {
+      "displayName": "Help Box",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "help-box.help-box"
+    },
+    "orgAdminHelpBox": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "OrgAdminHelpBox.TEST",
+        "OrgAdminHelpBox.LECTURE_FORM_BASIC_INFO",
+        "OrgAdminHelpBox.LECTURE_FORM_AUTH",
+        "OrgAdminHelpBox.LECTURE_FORM_CLASSIFICATION",
+        "OrgAdminHelpBox.LECTURE_FORM_CONTRIBUTORS",
+        "OrgAdminHelpBox.LECTURE_FORM_CUSTOM_DATA",
+        "OrgAdminHelpBox.LECTURE_FORM_INFORMATION",
+        "OrgAdminHelpBox.LECTURE_FORM_INTERACTION",
+        "OrgAdminHelpBox.LECTURE_FORM_LANGUAGES",
+        "OrgAdminHelpBox.LECTURE_FORM_PARTS",
+        "OrgAdminHelpBox.LECTURE_FORM_PLUGIN",
+        "OrgAdminHelpBox.LECTURE_FORM_VIDEO_CALL",
+        "OrgAdminHelpBox.LECTURE_FORMAT_FORM_BASIC",
+        "OrgAdminHelpBox.LECTURE_FORMAT_FORM_DEFAULTS",
+        "OrgAdminHelpBox.QUICK_FILTER_BUTTONS_EDITOR_VIEW",
+        "OrgAdminHelpBox.QUICK_FILTER_BUTTONS_EDITOR_DIALOG",
+        "OrgAdminHelpBox.PERSON_FORM_BASIC_INFO",
+        "OrgAdminHelpBox.PERSON_FORM_BIO",
+        "OrgAdminHelpBox.PERSON_FORM_COMPANY",
+        "OrgAdminHelpBox.PERSON_FORM_INTERNAL",
+        "OrgAdminHelpBox.PERSON_FORM_LECTURES",
+        "OrgAdminHelpBox.PERSON_FORM_SOCIAL",
+        "OrgAdminHelpBox.PRODUCT_FORM_BASIC_INFO",
+        "OrgAdminHelpBox.PRODUCT_FORM_CLASSIFICATION ",
+        "OrgAdminHelpBox.PRODUCT_FORM_GALLERY",
+        "OrgAdminHelpBox.ORG_FORM_BASIC_DETAILS",
+        "OrgAdminHelpBox.ORG_FORM_CLASSIFICATION",
+        "OrgAdminHelpBox.ORG_FORM_EXTERNAL",
+        "OrgAdminHelpBox.ORG_FORM_GALLERY",
+        "OrgAdminHelpBox.ORG_FORM_INFORMATION",
+        "OrgAdminHelpBox.ORG_FORM_INTERNAL",
+        "OrgAdminHelpBox.ORG_FORM_LOCATION",
+        "OrgAdminHelpBox.ORG_FORM_PERMISSIONS",
+        "OrgAdminHelpBox.ORG_FORM_TIME",
+        "OrgAdminHelpBox.FORM_PRODUCT_MARKS",
+        "OrgAdminHelpBox.FORM_VENDOR_MARKS",
+        "OrgAdminHelpBox.FORM_VENDOR_CRAFTS",
+        "OrgAdminHelpBox.GENERAL_EVENT_NETWORK_NAME",
+        "OrgAdminHelpBox.GENERAL_EVENT_DESCRIPTION",
+        "OrgAdminHelpBox.SPEAKER_RATING_TOGGLE",
+        "OrgAdminHelpBox.SPEAKER_RATING_PUBLIC_TOGGLE",
+        "OrgAdminHelpBox.VENDOR_SPEAKER_ENABLED_TOGGLE",
+        "OrgAdminHelpBox.SESSION_SURVEY_ENABLED_TOGGLE",
+        "OrgAdminHelpBox.SESSION_CHAT_ENABLED_TOGGLE",
+        "OrgAdminHelpBox.SESSION_PARTS_ENABLED_TOGGLE",
+        "OrgAdminHelpBox.SESSION_FILES_ENABLED_TOGGLE",
+        "OrgAdminHelpBox.VENDOR_FORM_ENABLED_TOGGLE",
+        "OrgAdminHelpBox.GENERAL_EVENT_HIGHLIGHT_TALKS",
+        "OrgAdminHelpBox.GENERAL_EVENT_LECTURE_HANDOUT_VISIBILITY",
+        "OrgAdminHelpBox.GENERAL_EVENT_TALK_LANGUAGES",
+        "OrgAdminHelpBox.GENERAL_EVENT_ACCESS_CODE",
+        "OrgAdminHelpBox.GENERAL_EVENT_PERMISSIONS",
+        "OrgAdminHelpBox.ACTIVE_USER_DASHBOARD",
+        "OrgAdminHelpBox.ORG_VENDOR_LABEL",
+        "OrgAdminHelpBox.ORG_STAFF_LABEL",
+        "OrgAdminHelpBox.TAG_EDITOR",
+        "OrgAdminHelpBox.TOPIC_EDITOR",
+        "OrgAdminHelpBox.SUBJECT_EDITOR",
+        "OrgAdminHelpBox.BADGE_EDITOR",
+        "OrgAdminHelpBox.TICKET_EDITOR",
+        "OrgAdminHelpBox.PAGE_MENU_EDITOR",
+        "OrgAdminHelpBox.GENERAL_EVENT_TIME_AND_DATE",
+        "OrgAdminHelpBox.LECTURE_FORMAT_EDITOR",
+        "OrgAdminHelpBox.ORG_ROOM_EDITOR",
+        "OrgAdminHelpBox.ON_PREMISE_NETWORKING_TIMES",
+        "OrgAdminHelpBox.VIDEO_CALL_NETWORKING_TIMES",
+        "OrgAdminHelpBox.NON_REGISTERED_TALQUE_ACCESS",
+        "OrgAdminHelpBox.ON_SITE_PARTNER_MEETINGS",
+        "OrgAdminHelpBox.VIRTUAL_PARTNER_MEETINGS",
+        "OrgAdminHelpBox.TICKET_CATEGORY_EDITOR",
+        "OrgAdminHelpBox.AGENCY_EMAIL_TEMPLATE_GRID_EDITOR"
+      ],
+      "required": true
+    },
+    "videoUrl": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    }
+  }
+}

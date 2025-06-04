@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_carrer_career_three_boxes",
+  "info": {
+    "displayName": "Career Three Boxes",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "box_title": {
+      "type": "string",
+      "required": true
+    },
+    "box_description": {
+      "type": "text",
+      "required": true
+    },
+    "box_icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

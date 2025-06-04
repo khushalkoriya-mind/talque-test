@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "get_latest_updates",
+  "info": {
+    "singularName": "get-latest-update",
+    "pluralName": "get-latest-updates",
+    "displayName": "Get latest update mails",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "email": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "email",
+      "required": true
+    }
+  }
+}

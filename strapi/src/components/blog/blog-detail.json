@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blog_details_blog_details",
+  "info": {
+    "displayName": "Blog Data",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_optional": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
